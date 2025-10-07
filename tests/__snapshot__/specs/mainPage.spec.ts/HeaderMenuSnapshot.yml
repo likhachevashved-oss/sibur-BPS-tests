@@ -1,0 +1,14 @@
+- list:
+  - listitem:
+    - button "Школьникам":
+      - img
+  - listitem:
+    - button "Студентам":
+      - link "Студентам":
+        - /url: https://sibured.ru/student
+  - listitem:
+    - button "Клиентам"
+  - listitem:
+    - button "Журнал EdLab":
+      - link "Журнал EdLab":
+        - /url: https://sibured.ru/edlab
