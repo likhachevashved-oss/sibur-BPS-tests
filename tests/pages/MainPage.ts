@@ -2,6 +2,7 @@ import { expect, Locator, Page } from '@playwright/test';
 import { BasePage } from './BasePage';
 
 export class MainPage extends BasePage {
+  private readonly Yvedomlenie: Locator;
   private readonly HeaderLogo: Locator;
   private readonly HeaderButtonVoiti: Locator;
   private readonly HeaderMenu: Locator;
@@ -9,13 +10,14 @@ export class MainPage extends BasePage {
   private readonly ButtonZapisatsya: Locator;
   private readonly FormaRegistration: Locator;
   private readonly FormaButtonZaregistrirovatsya: Locator;
-  private readonly FormaStepOne: Locator;
+  //private readonly FormaStepOne: Locator;
   private readonly FormaPoleEmail: Locator;
   private readonly FormaPoleFamilia: Locator;
   private readonly FormaPoleName: Locator;
   private readonly FormaPoleOtchestvo: Locator;
   private readonly FormaCheckboxSoglasie: Locator;
   private readonly FormaButtonProdoljit: Locator;
+  //private readonly FormaStepTwo: Locator;
   private readonly FormaPoleDrugoe: Locator;
   private readonly FormaPoleSvoiVariant: Locator;
   private readonly FormaButtonProdoljit1: Locator;
@@ -26,6 +28,7 @@ export class MainPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
+    this.Yvedomlenie = this.page.getByRole('button', { name: 'Нет, спасибо' });
     this.HeaderLogo = this.page.getByRole('link', { name: 'Образовательный портал' });
     this.HeaderButtonVoiti = this.page.getByRole('button', { name: 'Войти' });
     this.HeaderMenu = this.page.locator('.NavigationMenu__List__GS3QgCh8');
@@ -38,7 +41,7 @@ export class MainPage extends BasePage {
     this.FormaButtonZaregistrirovatsya = this.page.getByRole('button', {
       name: 'Зарегистрироваться',
     });
-    this.FormaStepOne = this.page.locator('.FirstStepRegistration__container__plPN9wWd');
+    //this.FormaStepOne = this.page.locator('.FirstStepRegistration__container__plPN9wWd');
     this.FormaPoleEmail = this.page.getByRole('textbox', { name: 'Введите почту' });
     this.FormaPoleFamilia = this.page.getByRole('textbox', { name: 'Введите фамилию' });
     this.FormaPoleName = this.page.getByRole('textbox', { name: 'Введите имя' });
@@ -46,14 +49,17 @@ export class MainPage extends BasePage {
     this.FormaCheckboxSoglasie = this.page.getByRole('checkbox', {
       name: 'Соглашаюсь на обработку персональных данных. Положение о конфиденциальности, Пол',
     });
-    this.FormaButtonProdoljit = page.getByRole('button', { name: 'Продолжить' });
-    this.FormaPoleDrugoe = page.getByText('Другое');
-    this.FormaPoleSvoiVariant = page.getByRole('textbox', { name: 'Введите свой вариант' });
-    this.FormaButtonProdoljit1 = page.getByRole('button', { name: 'Продолжить' });
-    this.FormaPoleVvediteNazvanie = page.getByRole('textbox', { name: 'Введите название' });
-    this.FormaPoleVvediteDolznost = page.getByRole('textbox', { name: 'Введите должность' });
-    this.FormaButtonZavershit = page.getByRole('button', { name: 'Завершить' });
-    this.FormaEkranYspex = page.getByRole('heading', { name: 'Вы зарегистрированы на портале' });
+    this.FormaButtonProdoljit = this.page.getByRole('button', { name: 'Продолжить' });
+    //this.FormaStepTwo = this.page.locator('.SecondStepRegistration__container__Tm0jZAUr');
+    this.FormaPoleDrugoe = this.page.getByText('Другое');
+    this.FormaPoleSvoiVariant = this.page.getByRole('textbox', { name: 'Введите свой вариант' });
+    this.FormaButtonProdoljit1 = this.page.getByRole('button', { name: 'Продолжить' });
+    this.FormaPoleVvediteNazvanie = this.page.getByRole('textbox', { name: 'Введите название' });
+    this.FormaPoleVvediteDolznost = this.page.getByRole('textbox', { name: 'Введите должность' });
+    this.FormaButtonZavershit = this.page.getByRole('button', { name: 'Завершить' });
+    this.FormaEkranYspex = this.page.getByRole('heading', {
+      name: 'Вы зарегистрированы на портале',
+    });
   }
 
   async open() {
